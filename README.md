@@ -1,12 +1,10 @@
 # Phân loại nấm ăn được hay có độc (Mushroom Classification)
 
-> ⚠️ **Trạng thái:** Repo đang trong giai đoạn khởi tạo (commit đầu tiên, 25/09/2026). Các mục dưới đây sẽ được cập nhật dần theo tiến độ (EDA → xử lý dữ liệu → huấn luyện → đóng gói → app/Docker → triển khai).
-
 ## 1. Thành viên
 | Họ tên | MSSV | Phần việc |
 |---|---|---|
-| _(điền tên)_ | _(điền MSSV)_ | |
-| _(điền tên)_ | _(điền MSSV)_ | |
+| _Phạm Văn Tình_ | _10123316_ | |
+| _Bùi Quang Trường_ | _10123333_ | |
 
 ## 2. Bài toán
 - **Mô tả:** Dự đoán một cây nấm là **ăn được** hay **có độc** dựa trên các đặc điểm hình thái quan sát được (hình dạng/màu mũ nấm, mùi, màu phiến nấm, môi trường sống, v.v.).
