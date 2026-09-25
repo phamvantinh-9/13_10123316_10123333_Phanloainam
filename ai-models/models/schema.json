@@ -1,0 +1,262 @@
+{
+  "target": {
+    "column": "class",
+    "encoding": {
+      "e": 0,
+      "p": 1
+    },
+    "labels_full_name": {
+      "e": "edible",
+      "p": "poisonous"
+    }
+  },
+  "dropped_columns": [
+    "veil-type"
+  ],
+  "missing_value_token": "?",
+  "missing_value_strategy": "Giữ nguyên làm 1 category riêng (áp dụng cho stalk-root), không xoá dòng, không điền mode.",
+  "features": [
+    {
+      "name": "cap-shape",
+      "type": "categorical",
+      "allowed_values": [
+        "b",
+        "c",
+        "f",
+        "k",
+        "s",
+        "x"
+      ]
+    },
+    {
+      "name": "cap-surface",
+      "type": "categorical",
+      "allowed_values": [
+        "f",
+        "g",
+        "s",
+        "y"
+      ]
+    },
+    {
+      "name": "cap-color",
+      "type": "categorical",
+      "allowed_values": [
+        "b",
+        "c",
+        "e",
+        "g",
+        "n",
+        "p",
+        "r",
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "bruises",
+      "type": "categorical",
+      "allowed_values": [
+        "f",
+        "t"
+      ]
+    },
+    {
+      "name": "odor",
+      "type": "categorical",
+      "allowed_values": [
+        "a",
+        "c",
+        "f",
+        "l",
+        "m",
+        "n",
+        "p",
+        "s",
+        "y"
+      ]
+    },
+    {
+      "name": "gill-attachment",
+      "type": "categorical",
+      "allowed_values": [
+        "a",
+        "f"
+      ]
+    },
+    {
+      "name": "gill-spacing",
+      "type": "categorical",
+      "allowed_values": [
+        "c",
+        "w"
+      ]
+    },
+    {
+      "name": "gill-size",
+      "type": "categorical",
+      "allowed_values": [
+        "b",
+        "n"
+      ]
+    },
+    {
+      "name": "gill-color",
+      "type": "categorical",
+      "allowed_values": [
+        "b",
+        "e",
+        "g",
+        "h",
+        "k",
+        "n",
+        "o",
+        "p",
+        "r",
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "stalk-shape",
+      "type": "categorical",
+      "allowed_values": [
+        "e",
+        "t"
+      ]
+    },
+    {
+      "name": "stalk-root",
+      "type": "categorical",
+      "allowed_values": [
+        "?",
+        "b",
+        "c",
+        "e",
+        "r"
+      ]
+    },
+    {
+      "name": "stalk-surface-above-ring",
+      "type": "categorical",
+      "allowed_values": [
+        "f",
+        "k",
+        "s",
+        "y"
+      ]
+    },
+    {
+      "name": "stalk-surface-below-ring",
+      "type": "categorical",
+      "allowed_values": [
+        "f",
+        "k",
+        "s",
+        "y"
+      ]
+    },
+    {
+      "name": "stalk-color-above-ring",
+      "type": "categorical",
+      "allowed_values": [
+        "b",
+        "c",
+        "e",
+        "g",
+        "n",
+        "o",
+        "p",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "stalk-color-below-ring",
+      "type": "categorical",
+      "allowed_values": [
+        "b",
+        "c",
+        "e",
+        "g",
+        "n",
+        "o",
+        "p",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "veil-color",
+      "type": "categorical",
+      "allowed_values": [
+        "n",
+        "o",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "ring-number",
+      "type": "categorical",
+      "allowed_values": [
+        "n",
+        "o",
+        "t"
+      ]
+    },
+    {
+      "name": "ring-type",
+      "type": "categorical",
+      "allowed_values": [
+        "e",
+        "f",
+        "l",
+        "n",
+        "p"
+      ]
+    },
+    {
+      "name": "spore-print-color",
+      "type": "categorical",
+      "allowed_values": [
+        "b",
+        "h",
+        "k",
+        "n",
+        "o",
+        "r",
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "population",
+      "type": "categorical",
+      "allowed_values": [
+        "a",
+        "c",
+        "n",
+        "s",
+        "v",
+        "y"
+      ]
+    },
+    {
+      "name": "habitat",
+      "type": "categorical",
+      "allowed_values": [
+        "d",
+        "g",
+        "l",
+        "m",
+        "p",
+        "u",
+        "w"
+      ]
+    }
+  ]
+}
