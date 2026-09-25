@@ -3,8 +3,8 @@
 ## 1. Thành viên
 | Họ tên | MSSV | Phần việc |
 |---|---|---|
-| _Phạm Văn Tình_ | _10123316_ | |
-| _Bùi Quang Trường_ | _10123333_ | |
+| _Phạm Văn Tình_ | _10123316_ | Xây dựng cấu trúc dự án, Phân tích dữ liệu khám phá (EDA), Xây dựng AI Model, Xử lý Git & GitHub.|
+| _Bùi Quang Trường_ | _10123333_ | Xây dựng Backend/Frontend (App), Viết tài liệu báo cáo, Kiểm thử hệ thống.|
 
 ## 2. Bài toán
 - **Mô tả:** Dự đoán một cây nấm là **ăn được** hay **có độc** dựa trên các đặc điểm hình thái quan sát được (hình dạng/màu mũ nấm, mùi, màu phiến nấm, môi trường sống, v.v.).
