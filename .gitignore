@@ -1,0 +1,32 @@
+# Env & secrets
+.env
+*.env.local
+kaggle.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+venv/
+.venv/
+*.egg-info/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Model artifacts lớn có thể tạo lại được (giữ bản chính thức trong ai-models/models/)
+*.ckpt
+*.h5
+
+# Logs
+*.log
