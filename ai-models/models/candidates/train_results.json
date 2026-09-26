@@ -1,0 +1,53 @@
+{
+  "Baseline (Dummy)": {
+    "model_path": "/home/claude/repo/ai-models/models/candidates/baseline_dummy.joblib",
+    "best_params": {},
+    "cv_score": null,
+    "train_time_sec": 0.021,
+    "predict_time_ms": 4.123,
+    "file_size_kb": 7.4
+  },
+  "Logistic Regression": {
+    "model_path": "/home/claude/repo/ai-models/models/candidates/logistic_regression.joblib",
+    "best_params": {
+      "clf__C": 100
+    },
+    "cv_score": 1.0,
+    "train_time_sec": 0.879,
+    "predict_time_ms": 3.68,
+    "file_size_kb": 8.5
+  },
+  "KNN": {
+    "model_path": "/home/claude/repo/ai-models/models/candidates/knn.joblib",
+    "best_params": {
+      "clf__n_neighbors": 3,
+      "clf__weights": "distance"
+    },
+    "cv_score": 0.9998403830806065,
+    "train_time_sec": 6.969,
+    "predict_time_ms": 5.139,
+    "file_size_kb": 1683.3
+  },
+  "Random Forest": {
+    "model_path": "/home/claude/repo/ai-models/models/candidates/random_forest.joblib",
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__n_estimators": 100
+    },
+    "cv_score": 1.0,
+    "train_time_sec": 13.916,
+    "predict_time_ms": 8.415,
+    "file_size_kb": 561.8
+  },
+  "SVM (RBF)": {
+    "model_path": "/home/claude/repo/ai-models/models/candidates/svm_rbf.joblib",
+    "best_params": {
+      "clf__C": 1,
+      "clf__kernel": "linear"
+    },
+    "cv_score": 1.0,
+    "train_time_sec": 53.586,
+    "predict_time_ms": 4.125,
+    "file_size_kb": 66.8
+  }
+}
