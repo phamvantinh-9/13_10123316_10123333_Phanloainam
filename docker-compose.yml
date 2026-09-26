@@ -16,17 +16,18 @@ services:
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     environment:
-      - AI_SERVICE_URL=${AI_SERVICE_URL}
-      - MONGODB_URI=${MONGODB_URI}
+      - AI_SERVICE_URL=${AI_SERVICE_URL:-http://ai-service:8001}
     depends_on:
       ai-service:
         condition: service_healthy
 
   frontend:
-    build: ./app/frontend
+    build:
+      context: ./app/frontend
+      dockerfile: Dockerfile
     ports:
       - "${FRONTEND_PORT:-3000}:80"
     environment:
-      - API_URL=${API_URL}
+      - API_URL=${API_URL:-http://localhost:8000}
     depends_on:
       - backend
