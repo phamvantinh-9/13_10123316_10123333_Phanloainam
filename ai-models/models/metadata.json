@@ -1,0 +1,36 @@
+{
+  "model_name": "Logistic Regression",
+  "model_version": "1.0.0",
+  "trained_at": "2026-09-26",
+  "dataset": "Mushroom Classification (Kaggle uciml/mushroom-classification)",
+  "n_train_samples": 6499,
+  "n_test_samples": 1625,
+  "test_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "roc_auc": 1.0
+  },
+  "predict_time_ms": 3.68,
+  "file_size_kb": 9.3,
+  "library_versions": {
+    "python": "3.12.3",
+    "scikit-learn": "1.8.0",
+    "pandas": "3.0.2",
+    "numpy": "2.4.4",
+    "joblib": "1.5.3"
+  },
+  "pipeline_steps": [
+    "prep",
+    "clf"
+  ],
+  "label_map": {
+    "e": 0,
+    "p": 1
+  },
+  "label_names": {
+    "0": "edible",
+    "1": "poisonous"
+  }
+}

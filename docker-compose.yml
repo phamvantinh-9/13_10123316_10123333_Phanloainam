@@ -1,6 +1,8 @@
 services:
   ai-service:
-    build: ./ai-models/service
+    build:
+      context: ./ai-models
+      dockerfile: service/Dockerfile
     ports:
       - "${AI_SERVICE_PORT:-8001}:8001"
     healthcheck:
