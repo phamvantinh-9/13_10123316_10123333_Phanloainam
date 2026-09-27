@@ -5,8 +5,8 @@
 ## 1. Thành viên
 | Họ tên | MSSV | Phần việc |
 |---|---|---|
-| Phạm Văn Tình |10123316 | |
-| Bùi Quang Trường |10123333 | |
+| Phạm Văn Tình |10123316 | Xây dựng mô hình AI (EDA, huấn luyện & đánh giá Logistic Regression), thiết kế Backend (FastAPI), cấu hình Docker Compose và triển khai hệ thống lên Ngrok.|
+| Bùi Quang Trường |10123333 |Phát triển giao diện Frontend (React/Vite, kết nối API schema tự động), viết tài liệu báo cáo (`baocao.docx`), thiết kế Slide thuyết trình và kiểm thử hiệu năng hệ thống (Load Testing). |
 
 ## 2. Bài toán
 - **Mô tả:** Dự đoán một cây nấm là **ăn được** hay **có độc** dựa trên các đặc điểm hình thái quan sát được (hình dạng/màu mũ nấm, mùi, màu phiến nấm, môi trường sống, v.v.).
