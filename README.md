@@ -1,10 +1,12 @@
 # Phân loại nấm ăn được hay có độc (Mushroom Classification)
 
+> ⚠️ **Trạng thái:** Repo đang trong giai đoạn khởi tạo (commit đầu tiên, 25/09/2026). Các mục dưới đây sẽ được cập nhật dần theo tiến độ (EDA → xử lý dữ liệu → huấn luyện → đóng gói → app/Docker → triển khai).
+
 ## 1. Thành viên
 | Họ tên | MSSV | Phần việc |
 |---|---|---|
-| _Phạm Văn Tình_ | _10123316_ | Xây dựng cấu trúc dự án, Phân tích dữ liệu khám phá (EDA), Xây dựng AI Model, Xử lý Git & GitHub.|
-| _Bùi Quang Trường_ | _10123333_ | Xây dựng Backend/Frontend (App), Viết tài liệu báo cáo, Kiểm thử hệ thống.|
+| _(điền tên)_ | _(điền MSSV)_ | |
+| _(điền tên)_ | _(điền MSSV)_ | |
 
 ## 2. Bài toán
 - **Mô tả:** Dự đoán một cây nấm là **ăn được** hay **có độc** dựa trên các đặc điểm hình thái quan sát được (hình dạng/màu mũ nấm, mùi, màu phiến nấm, môi trường sống, v.v.).
@@ -19,26 +21,31 @@
 - **Chi tiết cột & cách giải nén:** xem [`ai-models/data/DATA.md`](ai-models/data/DATA.md).
 
 ## 4. Kết quả model
-_(sẽ cập nhật sau bước 3–4: huấn luyện ≥4 model + đánh giá)_
+Đánh giá trên tập test (1.625 mẫu, chưa từng dùng để train/tune). Chi tiết đầy đủ + confusion matrix xem `docs/baocao.docx` mục 5.
 
-| Model | Metric chính (test) | Metric phụ | Train/Test time | Predict time | File size | Nhận xét |
-|---|---|---|---|---|---|---|
-| Baseline | | | | | | |
-| Model 1 | | | | | | |
-| Model 2 | | | | | | |
-| Model 3 | | | | | | |
-| Model 4 | | | | | | |
+| Model | Accuracy | Precision | Recall | F1 | Train time | Predict time | File size | Nhận xét |
+|---|---|---|---|---|---|---|---|---|
+| Baseline (Dummy) | 0.5182 | 0.0000 | 0.0000 | 0.0000 | 0,02s | 4,1ms | 7,4KB | Luôn đoán lớp đông hơn |
+| **Logistic Regression** ✅ | **1.0000** | **1.0000** | **1.0000** | **1.0000** | 0,88s | **3,68ms** | **8,5KB** | **Model được chọn** — nhanh & nhẹ nhất |
+| KNN | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 6,97s | 5,1ms | 1.683,3KB | File nặng nhất (lưu cả tập train) |
+| Random Forest | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 13,92s | 8,4ms | 561,8KB | |
+| SVM | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 53,59s | 4,1ms | 66,8KB | Train lâu nhất |
 
 ## 5. Đóng gói model
-_(sẽ cập nhật sau bước 5.1)_ — dự kiến: `ai-models/models/model.joblib`, `schema.json`, `metadata.json`.
+- `ai-models/models/model.joblib` — Logistic Regression + tiền xử lý One-Hot đóng gói chung (1 sklearn Pipeline hoàn chỉnh).
+- `ai-models/models/metadata.json` — tên/phiên bản model, chỉ số test, phiên bản thư viện lúc train (scikit-learn 1.8.0, pandas 3.0.2, numpy 2.4.4).
+- `ai-models/models/schema.json` — 21 thuộc tính + giá trị hợp lệ + ánh xạ nhãn (từ Bước 2).
+- Cách xuất từ Colab: chạy tuần tự `01_eda → 02_preprocess → 03_train → 04_evaluate` rồi `python ai-models/src/package_model.py`, commit `model.joblib` + `metadata.json` vào Git — Dockerfile AI Service tự COPY khi build.
 
 ## 6. Kiến trúc hệ thống
 ```
-[Frontend] → [Backend] → [AI Service] → (trả kết quả ngược lại)
-                 ↓
-             [MongoDB Atlas] (lưu lịch sử dự đoán)
+[Frontend :80] --/api/*--> [Backend :8000] --/predict--> [AI Service :8001]
+   (React+Vite,               (FastAPI,                    (FastAPI + model.joblib
+    Nginx proxy)             forward + lưu lịch sử)          nạp sẵn khi start)
 ```
-_(sơ đồ chi tiết + giải thích luồng request_id sẽ bổ sung ở bước 5.2/5.6)_
+- Frontend tự sinh form 21 thuộc tính bằng cách gọi `GET /api/schema` (Backend proxy từ AI Service `GET /schema`) — không hard-code danh sách cột ở Frontend.
+- Mỗi request có 1 `request_id` xuyên suốt 3 service để log/debug (xem mục 12 và `docs/baocao.docx` mục 7.2).
+- Chi tiết đặc tả API đầy đủ: xem `docs/baocao.docx` mục 7.3.
 
 ## 7. Chạy trên máy
 Yêu cầu: đã cài **Docker Desktop**.
@@ -46,7 +53,7 @@ Yêu cầu: đã cài **Docker Desktop**.
 cp .env.example .env
 docker compose up --build
 ```
-> ⚠️ Dockerfile của `ai-models/service`, `app/backend`, `app/frontend` đang được xây dựng — `docker compose up --build` sẽ hoạt động đầy đủ sau khi các thành phần này hoàn thiện (dự kiến trước 28/09/2026).
+Sau khi chạy xong: mở `http://localhost:3000` (Frontend), `http://localhost:8000/health` (Backend), `http://localhost:8001/health` (AI Service).
 
 ## 8. Huấn luyện lại model
 _(sẽ cập nhật: link Colab, thứ tự chạy notebook `01_eda → 02_preprocess → 03_train → 04_evaluate`)_
@@ -62,10 +69,11 @@ _(sẽ cập nhật: link Colab, thứ tự chạy notebook `01_eda → 02_prepr
 | `API_URL` | Địa chỉ Frontend gọi tới Backend |
 
 ## 10. Triển khai
-_(sẽ cập nhật ở bước 5.4)_
+Xem hướng dẫn chi tiết từng bước (2 phương án: máy cá nhân + ngrok, hoặc Render) tại [`docs/HUONG_DAN_TRIEN_KHAI.md`](docs/HUONG_DAN_TRIEN_KHAI.md).
 
 ## 11. Demo online
-_(sẽ cập nhật — địa chỉ App, địa chỉ AI Service/docs)_
+- Địa chỉ App: _(điền sau khi triển khai — xem docs/HUONG_DAN_TRIEN_KHAI.md)_
+- Địa chỉ AI Service: _(nếu public riêng)_
 
 ## 12. Nhật ký đổi cổng/tunnel
 | Thời điểm | Địa chỉ cũ | Địa chỉ mới |
@@ -73,7 +81,28 @@ _(sẽ cập nhật — địa chỉ App, địa chỉ AI Service/docs)_
 | | | |
 
 ## 13. Kết quả kiểm thử hiệu năng
-_(sẽ cập nhật ở bước 5.5)_
+Chạy kiểm tra tải bằng script tự viết (không cần cài k6/Locust):
+```bash
+python ai-models/service/tests/load_test.py --url <địa-chỉ-public>/predict --users 15 --duration 60
+```
+Kết quả đo được (điền sau khi chạy trên hệ thống đã public):
+
+| Chỉ số | Giá trị |
+|---|---|
+| Request/giây (RPS) | |
+| Tỉ lệ lỗi | |
+| p50 | |
+| p95 | |
+
+Mục tiêu kỳ vọng: 10–20 người dùng đồng thời trong 1 phút, tỉ lệ lỗi &lt;1%, p95 &lt;2s khi hệ thống đã "nóng".
 
 ## 14. Hạn chế và hướng phát triển
-_(sẽ cập nhật)_
+**Hạn chế:**
+- Bộ dữ liệu có độ tách biệt giữa 2 lớp rất cao (gần hoàn hảo) — dữ liệu thực tế thường nhiễu và khó phân loại hơn.
+- Lịch sử dự đoán hiện lưu tạm RAM ở Backend, chưa nối MongoDB Atlas thật.
+- Form 21 thuộc tính đòi hỏi người dùng hiểu thuật ngữ sinh học.
+
+**Hướng phát triển:**
+- Kết nối MongoDB Atlas thật để lưu lịch sử lâu dài.
+- Thêm ảnh minh hoạ cho từng giá trị thuộc tính trên Frontend.
+- Thử thêm mô hình Gradient Boosting/XGBoost; mở rộng sang nhận diện qua ảnh chụp thực tế (Computer Vision).
