@@ -1,12 +1,12 @@
 # Phân loại nấm ăn được hay có độc (Mushroom Classification)
 
-> ⚠️ **Trạng thái:** Repo đang trong giai đoạn khởi tạo (commit đầu tiên, 25/09/2026). Các mục dưới đây sẽ được cập nhật dần theo tiến độ (EDA → xử lý dữ liệu → huấn luyện → đóng gói → app/Docker → triển khai).
+
 
 ## 1. Thành viên
 | Họ tên | MSSV | Phần việc |
 |---|---|---|
-| _(điền tên)_ | _(điền MSSV)_ | |
-| _(điền tên)_ | _(điền MSSV)_ | |
+| Phạm Văn Tình |10123316 | |
+| Bùi Quang Trường |10123333 | |
 
 ## 2. Bài toán
 - **Mô tả:** Dự đoán một cây nấm là **ăn được** hay **có độc** dựa trên các đặc điểm hình thái quan sát được (hình dạng/màu mũ nấm, mùi, màu phiến nấm, môi trường sống, v.v.).
@@ -72,13 +72,13 @@ _(sẽ cập nhật: link Colab, thứ tự chạy notebook `01_eda → 02_prepr
 Xem hướng dẫn chi tiết từng bước (2 phương án: máy cá nhân + ngrok, hoặc Render) tại [`docs/HUONG_DAN_TRIEN_KHAI.md`](docs/HUONG_DAN_TRIEN_KHAI.md).
 
 ## 11. Demo online
-- Địa chỉ App: _(điền sau khi triển khai — xem docs/HUONG_DAN_TRIEN_KHAI.md)_
+- Địa chỉ App: https://squiggly-breeding-negligent.ngrok-free.dev/
 - Địa chỉ AI Service: _(nếu public riêng)_
 
 ## 12. Nhật ký đổi cổng/tunnel
 | Thời điểm | Địa chỉ cũ | Địa chỉ mới |
 |---|---|---|
-| | | |
+|25/09/2026 | Localhost| https://squiggly-breeding-negligent.ngrok-free.dev/|
 
 ## 13. Kết quả kiểm thử hiệu năng
 Chạy kiểm tra tải bằng script tự viết (không cần cài k6/Locust):
@@ -89,12 +89,10 @@ Kết quả đo được (điền sau khi chạy trên hệ thống đã public)
 
 | Chỉ số | Giá trị |
 |---|---|
-| Request/giây (RPS) | |
-| Tỉ lệ lỗi | |
-| p50 | |
-| p95 | |
-
-Mục tiêu kỳ vọng: 10–20 người dùng đồng thời trong 1 phút, tỉ lệ lỗi &lt;1%, p95 &lt;2s khi hệ thống đã "nóng".
+| Request/giây (RPS) |~24.17 req/s |
+| Tỉ lệ lỗi |0% |
+| p50 |~115.0 ms |
+| p95 |~195.4 ms |
 
 ## 14. Hạn chế và hướng phát triển
 **Hạn chế:**
