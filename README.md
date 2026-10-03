@@ -73,12 +73,12 @@ Xem hướng dẫn chi tiết từng bước (2 phương án: máy cá nhân + n
 
 ## 11. Demo online
 - Địa chỉ App: https://squiggly-breeding-negligent.ngrok-free.dev/
-- Địa chỉ AI Service: _(nếu public riêng)_
+- Địa chỉ AI Service: http://localhost:8001/
 
 ## 12. Nhật ký đổi cổng/tunnel
 | Thời điểm | Địa chỉ cũ | Địa chỉ mới |
 |---|---|---|
-|25/09/2026 | Localhost| https://squiggly-breeding-negligent.ngrok-free.dev/|
+|25/09/2026 | Localhost| http://localhost:3000 |
 
 ## 13. Kết quả kiểm thử hiệu năng
 Chạy kiểm tra tải bằng script tự viết (không cần cài k6/Locust):
